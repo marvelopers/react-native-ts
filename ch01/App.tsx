@@ -1,7 +1,13 @@
 import React from 'react';
 import { Text, SafeAreaView } from 'react-native';
+import * as Data from './src/data';
+
+const person = Data.createRandomPerson();
 
 export default function App() {
-  const children = [1,2,3].map(num => <Text>{num}</Text>)
-  return <SafeAreaView>{children}</SafeAreaView>;
+  return (
+    <SafeAreaView>
+      <Text>{JSON.stringify(person, null, 2)}</Text>
+    </SafeAreaView>
+  );
 }
