@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import Person from './src/screens/Person';
+import Person from './src/screens/Person_';
 import * as Data from './src/data';
 import Event from './src/screens/Event';
 import TopBar from './src/screens/TopBar';
