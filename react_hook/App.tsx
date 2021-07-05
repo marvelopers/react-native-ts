@@ -1,30 +1,31 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, Dimensions, ScrollView } from 'react-native';
 import { useClock } from './src/hooks/useClock';
+import Cache from './src/screens/Cache';
+import Memo from './src/screens/Memo';
+import Fibo from './src/screens/Fibo';
+
+const { width } = Dimensions.get('window');
+const numberOfComponents = 3;
 
 const App = () => {
   const time = useClock();
   return (
-    <SafeAreaView style={styles.SafeAreaView}>
-      <Text style={[styles.digitFont, styles.time]}>{time.toLocaleTimeString()}</Text>
-      <Text style={styles.digitFont}>{time.toLocaleDateString()}</Text>
+    <SafeAreaView>
+      <ScrollView horizontal contentContainerStyle={styles.contentContainerStyle}>
+        <Cache />
+        <Memo />
+        <Fibo />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  SafeAreaView: {
+  safeAreaView: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  digitFont: {
-    // fontFamily:
-    fontWeight: '400',
-  },
-  time: {
-    fontSize: 50,
-  },
+  contentContainerStyle: { width: width * numberOfComponents },
 });
 
 export default App;
