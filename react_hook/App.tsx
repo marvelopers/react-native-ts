@@ -2,9 +2,11 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
 const App = () => {
+  const time = new Date();
   return (
     <SafeAreaView style={styles.SafeAreaView}>
-      <Text style={styles.digitFont}></Text>
+      <Text style={[styles.digitFont, styles.time]}>{time.toLocaleTimeString()}</Text>
+      <Text style={styles.digitFont}>{time.toLocaleDateString()}</Text>
     </SafeAreaView>
   );
 };
