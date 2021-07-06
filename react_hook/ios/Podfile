@@ -12,6 +12,9 @@ target 'react_hook' do
     :hermes_enabled => false
   )
 
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'react_hookTests' do
     inherit! :complete
     # Pods for testing
