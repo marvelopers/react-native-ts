@@ -17,7 +17,6 @@ export type PersonProps = {
   person: Data.IPerson;
 };
 
-// export type IconType = 'comment' | 'retweet' | 'heart';
 export enum IconType {
   COMMENT = 'comment',
   RETWEET = 'retweet',
