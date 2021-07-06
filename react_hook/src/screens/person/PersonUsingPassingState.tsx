@@ -17,26 +17,30 @@ export type PersonProps = {
   person: Data.IPerson;
 };
 
-const PersonUsingValueState = ({ person }: PersonProps) => {
-  const [personCounts, setPersonCounts] = useState<Data.IPerson>({
-    ...person,
+// export type IconType = 'comment' | 'retweet' | 'heart';
+export enum IconType {
+  COMMENT = 'comment',
+  RETWEET = 'retweet',
+  HEART = 'heart',
+}
+
+const PersonUsingValueState = ({ person: initialPerson }: PersonProps) => {
+  const [person, setPerson] = useState<Data.IPerson>({
+    ...initialPerson,
     counts: { comment: 0, retweet: 0, heart: 0 },
   });
-  const [comment, setComment] = useState(0);
-  const [retweet, setRetweet] = useState(0);
-  const [heart, setHeart] = useState(0);
 
   const handlePressAvatar = useCallback(() => Alert.alert('Avatar'), []);
   const handlePressDelete = useCallback(() => Alert.alert('Delete'), []);
-  const handlePressCountCommentIcon = useCallback(
-    () => () => setComment(comment => comment + 1),
+
+  const handlePressCountIcon = useCallback(
+    (iconType: IconType) => () =>
+      setPerson(person => ({
+        ...person,
+        counts: { ...person.counts, iconType: person.counts[iconType] + 1 },
+      })),
     [],
   );
-  const handlePressCountRetweetIcon = useCallback(
-    () => () => setRetweet(retweet => retweet + 1),
-    [],
-  );
-  const handlePressCountHeartIcon = useCallback(() => () => setHeart(heart => heart + 1), []);
 
   const timeToAgo = dayjs(person.createDate).fromNow();
 
@@ -64,7 +68,7 @@ const PersonUsingValueState = ({ person }: PersonProps) => {
         <View style={styles.countView}>
           <IconText
             viewStyle={styles.touchableIcon}
-            onPress={handlePressCountCommentIcon}
+            onPress={handlePressCountIcon(IconType.COMMENT)}
             name="comment"
             size={24}
             color={Colors.blue500}
@@ -73,7 +77,7 @@ const PersonUsingValueState = ({ person }: PersonProps) => {
           />
           <IconText
             viewStyle={styles.touchableIcon}
-            onPress={handlePressCountRetweetIcon}
+            onPress={handlePressCountIcon(IconType.RETWEET)}
             name="retweet"
             size={24}
             color={Colors.purple500}
@@ -82,7 +86,7 @@ const PersonUsingValueState = ({ person }: PersonProps) => {
           />
           <IconText
             viewStyle={styles.touchableIcon}
-            onPress={handlePressCountHeartIcon}
+            onPress={handlePressCountIcon(IconType.HEART)}
             name="heart"
             size={24}
             color={Colors.red500}
