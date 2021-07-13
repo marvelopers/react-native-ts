@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import type FC from 'react';
 import {
   SafeAreaView,
@@ -14,6 +14,7 @@ import PersonUsingObjectState from './src/screens/person/PersonUsingObjectState'
 import PersonUsingPassingState from './src/screens/person/PersonUsingPassingState';
 import { Colors } from 'react-native-paper';
 import * as Data from './src/data';
+import TopBar from './src/components/TopBar';
 
 type PersonInfomation = {
   title: string;
@@ -31,7 +32,7 @@ const PersonInfomations: PersonInfomation[] = [
 const numberOfComponents = PersonInfomations.length;
 
 const App = () => {
-  const people = useMemo(() => Data.makeArray(10).map(Data.createRandomPerson), []);
+  const [people, setPeople] = useState<Data.IPerson[]>([]);
   const children = useMemo(
     () =>
       PersonInfomations.map(({ title, Component }) => (
@@ -45,10 +46,12 @@ const App = () => {
           />
         </View>
       )),
-    [],
+    [people.length],
   );
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      <TopBar setPeople={setPeople} />
       <ScrollView horizontal contentContainerStyle={styles.horizontalScrollView}>
         {children}
       </ScrollView>

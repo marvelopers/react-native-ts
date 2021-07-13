@@ -16,7 +16,7 @@ const PersonCount = ({ person, onPressCountIcon }: PersonCountProps) => {
     <View style={styles.countView}>
       <IconText
         viewStyle={styles.touchableIcon}
-        onPress={onPressCountIcon(IconType.COMMENT)}
+        onPress={() => onPressCountIcon(IconType.COMMENT)}
         name="comment"
         size={24}
         color={Colors.blue500}
@@ -25,7 +25,7 @@ const PersonCount = ({ person, onPressCountIcon }: PersonCountProps) => {
       />
       <IconText
         viewStyle={styles.touchableIcon}
-        onPress={onPressCountIcon(IconType.RETWEET)}
+        onPress={() => onPressCountIcon(IconType.RETWEET)}
         name="retweet"
         size={24}
         color={Colors.purple500}
@@ -34,7 +34,7 @@ const PersonCount = ({ person, onPressCountIcon }: PersonCountProps) => {
       />
       <IconText
         viewStyle={styles.touchableIcon}
-        onPress={onPressCountIcon(IconType.HEART)}
+        onPress={() => onPressCountIcon(IconType.HEART)}
         name="heart"
         size={24}
         color={Colors.red500}
