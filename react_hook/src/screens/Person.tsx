@@ -9,12 +9,12 @@ import {
   FlatList,
 } from 'react-native';
 import { Colors } from 'react-native-paper';
-import TopBar from '../../components/TopBar';
-import PersonUsingValueState from './PersonUsingValueState';
-import PersonUsingObjectState from './PersonUsingObjectState';
-import PersonUsingPassingState from './PersonUsingPassingState';
-import { PersonProps } from '../../components/Person';
-import * as Data from '../../data';
+import TopBar from '../components/TopBar';
+import PersonUsingValueState from '../components/person/PersonUsingValueState';
+import PersonUsingObjectState from '../components/person/PersonUsingObjectState';
+import PersonUsingPassingState from '../components/person/PersonUsingPassingState';
+import { PersonProps } from '../components/Person';
+import * as Data from '../data';
 
 type PersonInfomation = {
   title: string;

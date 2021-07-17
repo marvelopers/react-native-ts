@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconType } from '../screens/person/PersonUsingObjectState';
+import { IconType } from './person/PersonUsingObjectState';
 import { View } from 'react-native';
 import { Colors } from 'react-native-paper';
 import IconText from './IconText';

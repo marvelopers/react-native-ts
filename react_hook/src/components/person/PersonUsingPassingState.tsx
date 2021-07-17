@@ -5,9 +5,9 @@ import { Colors } from 'react-native-paper';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
-import Avatar from '../../components/Avatar';
-import IconText from '../../components/IconText';
-import { styles } from '../../components/Person.style';
+import Avatar from '../Avatar';
+import IconText from '../IconText';
+import { styles } from '../Person.style';
 import * as Data from '../../data';
 
 dayjs.locale('ko');
