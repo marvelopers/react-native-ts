@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import type FC from 'react';
+// import type FC from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,10 +15,11 @@ import PersonUsingPassingState from './src/screens/person/PersonUsingPassingStat
 import { Colors } from 'react-native-paper';
 import * as Data from './src/data';
 import TopBar from './src/components/TopBar';
+import { PersonProps } from './src/components/Person';
 
 type PersonInfomation = {
   title: string;
-  Component: FC<any>;
+  Component: ({ person }: PersonProps) => JSX.Element;
 };
 
 const { width } = Dimensions.get('window');
