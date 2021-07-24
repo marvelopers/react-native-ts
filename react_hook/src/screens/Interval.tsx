@@ -3,14 +3,13 @@ import { Avatar } from '../components/Avatar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import * as Data from '../data';
 import { Colors } from 'react-native-paper';
+import { useToggle } from '../hooks';
 
 type IdAndAvatar = Pick<Data.IPerson, 'id' | 'avatar'>;
 
 const Interval = () => {
-  const [start, setStart] = useState(true);
+  const [start, toggleStart] = useToggle(true);
   const [avatars, setAvatars] = useState<IdAndAvatar[]>([]);
-
-  const toggleStart = useCallback(() => setStart(start => !start), []);
   const clearAvatars = useCallback(() => setAvatars(notUsed => []), []);
 
   useEffect(() => {
@@ -25,11 +24,11 @@ const Interval = () => {
     return () => clearInterval(id);
   }, [start]);
 
-  const children = avatars.map(({ id, avatar }) => <Avatar key={id} uri={avatar} />);
+  const children = avatars.map(({ id, avatar }) => <Avatar key={id} uri={avatar} size={70} viewStyle={styles.avatarViewStyle} />);
 
   return (
     <View style={styles.view}>
-      <View style={styles.title}>
+      <View style={styles.topBar}>
         <Text onPress={toggleStart} style={styles.topBarText}>
           {start ? 'stop' : 'start'}
         </Text>
