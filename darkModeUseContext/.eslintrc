@@ -1,0 +1,60 @@
+{
+  "root": true,
+  "plugins": ["prettier", "react", "react-hooks"],
+  "extends": ["@react-native-community", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": [
+      1,
+      {
+        "svg": "always",
+        "ts": "never",
+        "tsx": "never",
+        "json": "ignorePackages"
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": "off",
+    "react/require-default-props": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "plugins": ["@typescript-eslint", "react", "prettier"],
+      "extends": [
+        "airbnb-typescript",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/react",
+        "plugin:react-hooks/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "curly": ["error", "all"],
+        "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["state"] }],
+        "import/no-extraneous-dependencies": "off",
+        "import/prefer-default-export": "off",
+        "react/require-default-props": "off",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-use-before-define": "off"
+      }
+    }
+  ],
+  "ignorePatterns": [".eslintrc.js", "babel.config.js", "metro.config.js"]
+}
