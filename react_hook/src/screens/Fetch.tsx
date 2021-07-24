@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { Colors } from 'react-native-paper';
 import * as Data from '../data';
+import { useAsync } from '../hooks/useAsync';
 import Country from './Country';
 
 const Fetch = () => {
   const [counties, setCounties] = useState<Data.ICountry[]>([]);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    Data.getCountrise().then(setCounties).catch(setError);
-  }, [])
+  const [error, resetError] = useAsync(async () => {
+    setCounties([]);
+    resetError()
+    const counties = await Data.getCountrise();
+    setCounties(counties)
+  });
 
   return <View>
     <Text style={styles.title}>Fetch</Text>
