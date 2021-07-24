@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-import { Colors, ActivityIndicator } from 'react-native-paper';
+import { StyleSheet, View, Text, Button, ActivityIndicator } from 'react-native';
+import { Colors } from 'react-native-paper';
 
 const Timer = () => {
   const [loading, setLoading] = useState(true);
