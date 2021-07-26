@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { useTheme } from "react-native-paper"
+import { Switch, useTheme } from "react-native-paper"
+import { useToggleTheme } from '../contexts/ToggleThemeContext';
 
 const Home = () => {
-  const theme = useTheme();
-  const { fonts, colors } = theme;
+  const { dark, colors, fonts } = useTheme();
+  const toggleTheme = useToggleTheme();
   return (
     <View style={[styles.view, { backgroundColor: colors.background }]}>
       <View style={[styles.bar, { backgroundColor: colors.primary }]}>
@@ -12,6 +13,7 @@ const Home = () => {
           TopBar
         </Text>
       </View>
+      <Switch value={dark} onValueChange={toggleTheme} />
       <View style={styles.content}>
         <Text style={[styles.text, { color: colors.text }, fonts.regular]}>
           Welcome to context world!
