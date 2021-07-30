@@ -24,8 +24,7 @@ const App = () => {
       {selected === 'lifeCycle' && <LifeCycle />}
       {selected === 'timer' && <Timer />}
       {selected === 'interval' && <Interval />}
-      {selected === 'fetch' && <Fetch />}
-    </SafeAreaView>
+      {selected === 'fetch' && <Fetch />}    </SafeAreaView>
   );
 };
 
