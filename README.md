@@ -25,3 +25,26 @@
 
 ** 리액트 공식문서에서는 꼭 필요한 상황에서만 useLayoutEffect를 사용하도록 권장
 
+### useRef
+
+- TextInput focus, blur와 같은 메서드를 제공하며 
+컴포넌트의 메서드를 호출하려면 컴포넌트의 리액트 요소를 얻을 수 있어야 컴포넌트_객체.메서드() 형태로 호출할 수 있습니다.
+
+컴포넌트가 제공하는 메서드를 호출할 수 있도록 ref속성을 제공합니다.
+ref 속성으로 컴포넌트의 인스턴스를 얻을 수 있으며, 이를 이용하여 ref.메서드() 형태로 코드를 실행할 수 있습니다.
+
+  ```
+  interface RefObject<T> {
+    readonly current: T | null
+  }
+  function useRef<T>(initialValue: T): MutableRefObject<T>;
+  function useRef<T>(initialValue: T | null): RefObject<T>;
+  ```
+  ```
+  const flatListRef = useRef<FlatList | null>(null);
+  <FlatList ref={flatListRef}/>
+  ```
+  ```
+  flatListRef.current?.scrollToEnd()
+  ```
+
